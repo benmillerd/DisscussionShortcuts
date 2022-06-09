@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         DiscussionRoadRunner
 // @namespace    http://tampermonkey.net/
-// @version      1.7
+// @version      1.7.a
 // @description  Quickly moderate discusion posts with a keyboard
-// @author       Alan Berta
+// @author       Alan Berta and Benjamin Millerd
 // @include      http://dev.alignable.com:3000/soko/discussion_posts*
 // @include      http://dev.alignable.com:3000/soko/discussions*
 // @include      https://deve.alignable.us/soko/discussions*
