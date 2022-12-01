@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DiscussionRoadRunner
 // @namespace    http://tampermonkey.net/
-// @version      1.7.a
+// @version      1.8
 // @description  Quickly moderate discusion posts with a keyboard
 // @author       Alan Berta and Benjamin Millerd
 // @include      http://dev.alignable.com:3000/soko/discussion_posts*
@@ -196,19 +196,101 @@
         oldHTML = "";
     };
 
+    //Moderation messages
+    var sendmessage1 = function() {
+     var curr = $("#index_table_discussions > tbody > tr");
+     curr[rr_activeRecord].scrollIntoView();
+     var tmp = $(curr[rr_activeRecord]).find(".col-msg").find("div").find("div").find("a");
+     $(tmp)[0].click();
+     var tmp2 = document.querySelector("#index_table_discussions > tbody > tr > td.col.col-msg > div > div.dropdown_menu > div > ul > li:nth-child(1) > a");
+     tmp2.click();
+    };
+    var sendmessage2 = function() {
+     var curr = $("#index_table_discussions > tbody > tr");
+     curr[rr_activeRecord].scrollIntoView();
+     var tmp = $(curr[rr_activeRecord]).find(".col-msg").find("div").find("div").find("a");
+     $(tmp)[0].click();
+     var tmp2 = document.querySelector("#index_table_discussions > tbody > tr > td.col.col-msg > div > div.dropdown_menu > div > ul > li:nth-child(2) > a");
+     tmp2.click();
+    };
+    var sendmessage3 = function() {
+     var curr = $("#index_table_discussions > tbody > tr");
+     curr[rr_activeRecord].scrollIntoView();
+     var tmp = $(curr[rr_activeRecord]).find(".col-msg").find("div").find("div").find("a");
+     $(tmp)[0].click();
+     var tmp2 = document.querySelector("#index_table_discussions > tbody > tr > td.col.col-msg > div > div.dropdown_menu > div > ul > li:nth-child(3) > a");
+     tmp2.click();
+    };
+    var sendmessage4 = function() {
+     var curr = $("#index_table_discussions > tbody > tr");
+     curr[rr_activeRecord].scrollIntoView();
+     var tmp = $(curr[rr_activeRecord]).find(".col-msg").find("div").find("div").find("a");
+     $(tmp)[0].click();
+     var tmp2 = document.querySelector("#index_table_discussions > tbody > tr > td.col.col-msg > div > div.dropdown_menu > div > ul > li:nth-child(4) > a");
+     tmp2.click();
+    };
+    var sendmessage5 = function() {
+     var curr = $("#index_table_discussions > tbody > tr");
+     curr[rr_activeRecord].scrollIntoView();
+     var tmp = $(curr[rr_activeRecord]).find(".col-msg").find("div").find("div").find("a");
+     $(tmp)[0].click();
+     var tmp2 = document.querySelector("#index_table_discussions > tbody > tr > td.col.col-msg > div > div.dropdown_menu > div > ul > li:nth-child(5) > a");
+     tmp2.click();
+    };
+    var sendmessage6 = function() {
+     var curr = $("#index_table_discussions > tbody > tr");
+     curr[rr_activeRecord].scrollIntoView();
+     var tmp = $(curr[rr_activeRecord]).find(".col-msg").find("div").find("div").find("a");
+     $(tmp)[0].click();
+     var tmp2 = document.querySelector("#index_table_discussions > tbody > tr > td.col.col-msg > div > div.dropdown_menu > div > ul > li:nth-child(6) > a");
+     tmp2.click();
+    };
+    var sendmessage7 = function() {
+     var curr = $("#index_table_discussions > tbody > tr");
+     curr[rr_activeRecord].scrollIntoView();
+     var tmp = $(curr[rr_activeRecord]).find(".col-msg").find("div").find("div").find("a");
+     $(tmp)[0].click();
+     var tmp2 = document.querySelector("#index_table_discussions > tbody > tr > td.col.col-msg > div > div.dropdown_menu > div > ul > li:nth-child(7) > a");
+     tmp2.click();
+    };
+    var sendmessage8 = function() {
+     var curr = $("#index_table_discussions > tbody > tr");
+     curr[rr_activeRecord].scrollIntoView();
+     var tmp = $(curr[rr_activeRecord]).find(".col-msg").find("div").find("div").find("a");
+     $(tmp)[0].click();
+     var tmp2 = document.querySelector("#index_table_discussions > tbody > tr > td.col.col-msg > div > div.dropdown_menu > div > ul > li:nth-child(8) > a");
+     tmp2.click();
+    };
+    var sendmessage9 = function() {
+     var curr = $("#index_table_discussions > tbody > tr");
+     curr[rr_activeRecord].scrollIntoView();
+     var tmp = $(curr[rr_activeRecord]).find(".col-msg").find("div").find("div").find("a");
+     $(tmp)[0].click();
+     var tmp2 = document.querySelector("#index_table_discussions > tbody > tr > td.col.col-msg > div > div.dropdown_menu > div > ul > li:nth-child(9) > a");
+     tmp2.click();
+    };
+    var sendmessage10 = function() {
+     var curr = $("#index_table_discussions > tbody > tr");
+     curr[rr_activeRecord].scrollIntoView();
+     var tmp = $(curr[rr_activeRecord]).find(".col-msg").find("div").find("div").find("a");
+     $(tmp)[0].click();
+     var tmp2 = document.querySelector("#index_table_discussions > tbody > tr > td.col.col-msg > div > div.dropdown_menu > div > ul > li:nth-child(10) > a");
+     tmp2.click();
+    };
+
     $(document).keydown(function(e) {
         if((event.ctrlKey || event.metaKey) && event.which == 40) {
-            // command + down, move to next row
+            // command + down, move to next row (command +down arrow)
             navigateToRow(rr_activeRecord+1);
             event.preventDefault();
             return true;
         } else if((event.ctrlKey || event.metaKey) && event.which == 38) {
-            // command + up, move to next row
+            // command + up, move to next row (command + up arrow)
             navigateToRow(rr_activeRecord-1);
             event.preventDefault();
             return true;
         } else if((event.ctrlKey || event.metaKey) && event.which == 65) {
-            // APPROVE
+            // APPROVE (command +a)
             if(isPosts) {
                 approveDiscussionPost();
             } else {
@@ -217,7 +299,7 @@
             event.preventDefault();
             return true;
         } else if((event.ctrlKey || event.metaKey) && event.which == 90) {
-            // DENY
+            // DENY (command + z)
             if(isPosts) {
                 denyDiscussionPost();
             } else {
@@ -226,7 +308,7 @@
             event.preventDefault();
             return true;
         } else if((event.ctrlKey || event.metaKey) && event.which == 69) {
-            // EDIT
+            // EDIT (command + e)
             if(isPosts) {
                 invokeEdit();
             } else {
@@ -234,6 +316,57 @@
             }
             event.preventDefault();
             return true;
+        }
+       else if(event.which == 49) {
+           // Mod message 1 (Shift + 1)
+           sendmessage1();
+           event.preventDefault();
+           return true;
+        }
+        else if(event.which == 50) {
+            // Mod message 2 (Shift + 2)
+            sendmessage2();
+           return true;
+        }
+        else if(event.which == 51) {
+            // Mod message 3 (Shift + 3)
+            sendmessage3();
+           return true;
+        }
+        else if(event.which == 52) {
+            // Mod message 4 (Shift + 4)
+            sendmessage4();
+           return true;
+        }
+        else if(event.which == 53) {
+            // Mod message 5 (Shift + 5)
+            sendmessage5();
+           return true;
+        }
+        else if(event.which == 54) {
+            // Mod message 6 (Shift + 6)
+            sendmessage6();
+           return true;
+        }
+        else if(event.which == 55) {
+            // Mod message 7 (Shift + 7)
+            sendmessage7();
+           return true;
+        }
+        else if(event.which == 56) {
+            // Mod message 8 (Shift + 8)
+            sendmessage8();
+           return true;
+        }
+        else if(event.which == 57) {
+            // Mod message 9 (Shift + 9)
+            sendmessage9();
+           return true;
+        }
+        else if(event.which == 48) {
+            // Mod message 0 (Shift + 0)
+            sendmessage10();
+           return true;
         }
     });
 
