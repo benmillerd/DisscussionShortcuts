@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DiscussionRoadRunner
 // @namespace    http://tampermonkey.net/
-// @version      1.9
+// @version      1.92
 // @description  Quickly moderate discusion posts with a keyboard
 // @author       Alan Berta and Benjamin Millerd
 // @include      http://dev.alignable.com:3000/soko/discussion_posts*
@@ -43,9 +43,10 @@
                 $(cur[rr_activeRecord]).find('td').each (function(column, td) {
                     $(td).css("background-color", "");
                 });
+                if(!isPosts){
                 $(cur[rr_activeRecord]).find(".soko-discussion__more").each(function(d,e) {
                     $(e).click();
-                });
+                });}
                 if(oldHTML != "" ) {
                     if(isPosts) {
                         $(cur[rr_activeRecord]).find(".soko-discussion__reply").html(oldHTML);
@@ -61,10 +62,9 @@
             $(cur[loc]).find(".soko-discussion__more").each(function(d,e) {
                 $(e).click();
             });
-
-            cur[loc].scrollIntoView();
             rr_activeRecord = loc;
-            annotateStopStuff(cur[loc]);
+            setTimeout(() => { annotateStopStuff(cur[loc]); }, 100);
+            cur[loc].scrollIntoView(true);
         }
     };
 
@@ -179,7 +179,7 @@
                 $(tmp2)[0].click();
             }
         }
-        setTimeout(() => { navigateToRow(rr_activeRecord+1); }, 100);
+        setTimeout(() => { navigateToRow(rr_activeRecord+1); }, 10);
     };
 
     var invokeEdit = function() {
